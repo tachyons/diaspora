@@ -16,6 +16,8 @@ class Aspect < ActiveRecord::Base
 
   validates_uniqueness_of :name, :scope => :user_id, :case_sensitive => false
 
+  scope :chat_enabled, ->{ where(chat_enabled: true)}
+
   before_validation do
     name.strip!
   end

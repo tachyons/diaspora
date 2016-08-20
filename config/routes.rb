@@ -114,6 +114,7 @@ Diaspora::Application.routes.draw do
     get "privacy"                   => :privacy_settings,        :as => :privacy_settings
     put "privacy"                   => :update_privacy_settings, :as => :update_privacy_settings
     get "getting_started_completed" => :getting_started_completed
+    post "chatable_aspects"         => :chatable_aspects
   end
 
   devise_for :users, controllers: {sessions: :sessions}, skip: :registration

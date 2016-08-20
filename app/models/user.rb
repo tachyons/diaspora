@@ -539,6 +539,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def chatable_aspects=(aspects_array)
+    self.aspects.chat_enabled.update_all(chat_enabled: false)
+    self.aspects.where(id: aspects_array).update_all(chat_enabled: true)
+  end
+
   private
 
   def clearable_fields

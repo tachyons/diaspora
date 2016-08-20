@@ -86,6 +86,7 @@ class UsersController < ApplicationController
     @user     = current_user
     @person   = @user.person
     @profile  = @user.profile
+    @aspects  = @user.aspects
     gon.preloads[:inviter] = PersonPresenter.new(current_user.invited_by.try(:person), current_user).as_json
 
     render "users/getting_started"
@@ -135,6 +136,11 @@ class UsersController < ApplicationController
       flash[:error] = I18n.t("users.confirm_email.email_not_confirmed")
     end
     redirect_to edit_user_path
+  end
+
+  def chatable_aspects
+    @aspects = current_user.chatable_aspects = params[:aspects]
+    redirect_to :back
   end
 
   private
