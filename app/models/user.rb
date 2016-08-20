@@ -540,8 +540,8 @@ class User < ActiveRecord::Base
   end
 
   def chatable_aspects=(aspects_array)
-    self.aspects.chat_enabled.update_all(chat_enabled: false)
-    self.aspects.where(id: aspects_array).update_all(chat_enabled: true)
+    aspects.chat_enabled.update_all(chat_enabled: false)
+    aspects.where(id: aspects_array).update_all(chat_enabled: true)
   end
 
   private

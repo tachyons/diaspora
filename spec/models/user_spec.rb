@@ -1098,4 +1098,13 @@ describe User, :type => :model do
       expect(User.active.count).to eq 6     # 6 users from fixtures
     end
   end
+
+  describe "chat" do
+    it "sets chatable aspects for a user" do
+      user = FactoryGirl.create(:user)
+      aspects = user.aspects.sample(2)
+      user.chatable_aspects = aspects
+      expect(user.aspects.chat_enabled).to eq aspects
+    end
+  end
 end
